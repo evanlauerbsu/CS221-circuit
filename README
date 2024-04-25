@@ -91,6 +91,8 @@ TESTING:
  Can your program handle bad input? Is your program  idiot-proof? How do you
  know? What are the known issues / bugs remaining in your program?
 
+ I wrote a naive solution for the CircuitBoard constructor and then tested it by running the CircuitTracerTester and iteratively fixing errors until no more issues were encountered. I used to debugger to track down a couple of errors including an error where board was not initialized.
+
 
 DISCUSSION:
 
