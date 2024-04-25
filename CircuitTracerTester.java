@@ -309,21 +309,21 @@ public class CircuitTracerTester {
 					testCircuitTracerArgs(STACK, INVALID_OPTION, VALID_1_FILENAME));
 			printTest("java CircuitTracer -q -z " + VALID_1_FILENAME,
 					testCircuitTracerArgs(QUEUE, INVALID_OPTION, VALID_1_FILENAME));
-			printTest("java CircuitTracer -s " + VALID_1_FILENAME, 
+			printTest("java CircuitTracer -s " + VALID_1_FILENAME,
 					testCircuitTracerArgs(STACK, VALID_1_FILENAME));
-			printTest("java CircuitTracer -q " + VALID_1_FILENAME, 
+			printTest("java CircuitTracer -q " + VALID_1_FILENAME,
 					testCircuitTracerArgs(QUEUE, VALID_1_FILENAME));
 			printTest("java CircuitTracer -s -c -z " + VALID_1_FILENAME,
 					testCircuitTracerArgs(STACK, CONSOLE, INVALID_OPTION, VALID_1_FILENAME));
 			printTest("java CircuitTracer -q -c -z " + VALID_1_FILENAME,
 					testCircuitTracerArgs(QUEUE, CONSOLE, INVALID_OPTION, VALID_1_FILENAME));
-			printTest("java CircuitTracer -s -c", 
+			printTest("java CircuitTracer -s -c",
 					testCircuitTracerArgs(STACK, CONSOLE));
-			printTest("java CircuitTracer -q -c", 
+			printTest("java CircuitTracer -q -c",
 					testCircuitTracerArgs(QUEUE, CONSOLE));
-			printTest("java CircuitTracer", 
+			printTest("java CircuitTracer",
 					testCircuitTracerArgs());
-			printTest("java CircuitTracer " + VALID_1_FILENAME, 
+			printTest("java CircuitTracer " + VALID_1_FILENAME,
 					testCircuitTracerArgs(VALID_1_FILENAME));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE CIRCUITTRACER TESTS WITH INVALID COMMAND LINE ARGUMENTS\n");

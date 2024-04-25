@@ -19,11 +19,11 @@ public class CircuitBoard {
 	//constants you may find useful
 	private final int ROWS; //initialized in constructor
 	private final int COLS; //initialized in constructor
-	private final char OPEN = 'O';	//capital 'o', an open position
+	private final char OPEN = 'O'; //capital 'o', an open position
 	private final char CLOSED = 'X';//a blocked position
-	private final char TRACE = 'T';	//part of the trace connecting 1 to 2
-	private final char START = '1';	//the starting component
-	private final char END = '2';	//the ending component
+	private final char TRACE = 'T'; //part of the trace connecting 1 to 2
+	private final char START = '1'; //the starting component
+	private final char END = '2'; //the ending component
 	private final String ALLOWED_CHARS = "OXT12"; //useful for validating with indexOf
 
 	/** Construct a CircuitBoard from a given board input file, where the first
@@ -44,17 +44,17 @@ public class CircuitBoard {
 	 */
 	public CircuitBoard(String filename) throws FileNotFoundException {
 		Scanner fileScan = new Scanner(new File(filename));
-		
+
 		//TODO: parse the given file to populate the char[][]
 		// throw FileNotFoundException if Scanner cannot read the file
 		// throw InvalidFileFormatException if any issues are encountered while parsing the file
-		
+
 		ROWS = 0; //replace with initialization statements using values from file
 		COLS = 0;
-		
+
 		fileScan.close();
 	}
-	
+
 	/** Copy constructor - duplicates original board
 	 * 
 	 * @param original board to copy
@@ -78,7 +78,7 @@ public class CircuitBoard {
 		}
 		return copy;
 	}
-	
+
 	/** Return the char at board position x,y
 	 * @param row row coordinate
 	 * @param col col coordinate
@@ -87,7 +87,7 @@ public class CircuitBoard {
 	public char charAt(int row, int col) {
 		return board[row][col];
 	}
-	
+
 	/** Return whether given board position is open
 	 * @param row
 	 * @param col
@@ -99,7 +99,7 @@ public class CircuitBoard {
 		}
 		return board[row][col] == OPEN;
 	}
-	
+
 	/** Set given position to be a 'T'
 	 * @param row
 	 * @param col
@@ -112,22 +112,22 @@ public class CircuitBoard {
 			throw new OccupiedPositionException("row " + row + ", col " + col + "contains '" + board[row][col] + "'");
 		}
 	}
-	
+
 	/** @return starting Point(row,col) */
 	public Point getStartingPoint() {
 		return new Point(startingPoint);
 	}
-	
+
 	/** @return ending Point(row,col) */
 	public Point getEndingPoint() {
 		return new Point(endingPoint);
 	}
-	
+
 	/** @return number of rows in this CircuitBoard */
 	public int numRows() {
 		return ROWS;
 	}
-	
+
 	/** @return number of columns in this CircuitBoard */
 	public int numCols() {
 		return COLS;
@@ -146,5 +146,5 @@ public class CircuitBoard {
 		}
 		return str.toString();
 	}
-	
+
 }// class CircuitBoard

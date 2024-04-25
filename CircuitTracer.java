@@ -27,7 +27,7 @@ public class CircuitTracer {
 		//TODO: print out clear usage instructions when there are problems with
 		// any command line args
 	}
-	
+
 	/** 
 	 * Set up the CircuitBoard and all other components based on command
 	 * line arguments.
@@ -45,5 +45,5 @@ public class CircuitTracer {
 		//TODO: run the search for best paths
 		//TODO: output results to console or GUI, according to specified choice
 	}
-	
+
 } // class CircuitTracer
