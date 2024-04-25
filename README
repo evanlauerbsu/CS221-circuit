@@ -1,0 +1,109 @@
+****************
+* Circuit
+* CS 221
+* 26 April 2024
+* Evan Lauer
+****************
+
+OVERVIEW:
+
+ Concisely explain what the program does. If this exceeds a couple
+ of sentences, you're going too far. The details go in other
+ sections.
+
+
+INCLUDED FILES:
+
+ List the files required for the project with a brief
+ explanation of why each is included.
+
+ e.g.
+ * Class1.java - source file
+ * Class2.java - source file
+ * README - this file
+
+
+COMPILING AND RUNNING:
+
+ Give the command for compiling the program, the command
+ for running the program, and any usage instructions the
+ user needs.
+
+ These are command-line instructions for a system like onyx.
+ They have nothing to do with Eclipse or any other IDE. They
+ must be specific - assume the user has Java installed, but
+ has no idea how to compile or run a Java program from the
+ command-line.
+
+ e.g.
+ From the directory containing all source files, compile the
+ driver class (and all dependencies) with the command:
+ $ javac Class1.java
+
+ Run the compiled class file with the command:
+ $ java Class1
+
+ Console output will give the results after the program finishes.
+
+
+PROGRAM DESIGN AND IMPORTANT CONCEPTS:
+
+ This is the sort of information someone who really wants to
+ understand your program - possibly to make future enhancements -
+ would want to know.
+
+ Explain the main concepts and organization of your program so that
+ the reader can understand how your program works. This is not a repeat
+ of javadoc comments or an exhaustive listing of all methods, but an
+ explanation of the critical algorithms and object interactions that make
+ up the program.
+
+ Explain the main responsibilities of the classes and interfaces that make
+ up the program. Explain how the classes work together to achieve the program
+ goals. If there are critical algorithms that a user should understand,
+ explain them as well.
+
+ If you were responsible for designing the program's classes and choosing
+ how they work together, why did you design the program this way? What, if
+ anything, could be improved?
+
+
+ANALYSIS:
+
+ i.
+  The queue will search the circuit board in such a way that it produces all possible solutions of length 1 followed by all possible solutions of length 2 and so on. The stack will search the circuit board in such a way that it searches on path to completeness and then searches another path starting at the most recent branch from the current path.
+ ii.
+  The total number of paths is not affected by the choice of stack or queue because the algorithm is written in such a way that it searches all possible paths. The algorithm would be more efficient if it used a queue implementation and stopped searching once the current branch being searched had a greater length than the current solution.
+ iii.
+  In the manual simulation that I ran, the stack found a solution in fewer steps than the queue. Because it searches one path to completion before attempting others, I think that the stack would find a solution fastest in most situations.
+ iv.
+  The queue guarantees that the first solution found will be the shortest because it searches paths in order of ascending length.
+ v.
+  The stack will use less maximum memory at one time than the queue because it only has to store the current path and the possible branches from the current path found at previous stages. The queue at worst can store all possible solutions of one or two different lengths which tends to be larger than a queue.
+ vi.
+  Looking at my manual simulations, it appears that "n" is the maximum possible path length and the algorithm is O(n^2).
+
+
+TESTING:
+
+ How did you test your program to be sure it works and meets all of the
+ requirements? What was the testing strategy? What kinds of tests were run?
+ Can your program handle bad input? Is your program  idiot-proof? How do you
+ know? What are the known issues / bugs remaining in your program?
+
+
+DISCUSSION:
+
+ Discuss the issues you encountered during programming (development)
+ and testing. What problems did you have? What did you have to research
+ and learn on your own? What kinds of errors did you get? How did you
+ fix them?
+
+ What parts of the project did you find challenging? Is there anything
+ that finally "clicked" for you in the process of working on this project?
+
+
+EXTRA CREDIT:
+
+ If the project had opportunities for extra credit that you attempted,
+ be sure to call it out so the grader does not overlook it.
