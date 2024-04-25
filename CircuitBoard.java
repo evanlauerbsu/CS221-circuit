@@ -54,12 +54,22 @@ public class CircuitBoard {
 			throw new InvalidFileFormatException("Wrong number of dimensions");
 		}
 
-		ROWS = Integer.parseInt(dimensions[0]);
-		COLS = Integer.parseInt(dimensions[1]);
+		try {
+			ROWS = Integer.parseInt(dimensions[0]);
+			COLS = Integer.parseInt(dimensions[1]);
+		} catch (NumberFormatException e) {
+			fileScan.close();
+			throw new InvalidFileFormatException("Dimensions not given as integers");
+		}
+
+		board = new char[ROWS][COLS];
 
 		int rowCount = 0;
 		while (fileScan.hasNext()) {
-			rowCount++;
+			if (rowCount >= board.length) {
+				fileScan.close();
+				throw new InvalidFileFormatException("Wrong number of rows");
+			}
 			String[] row = fileScan.nextLine().split("\\s+");
 
 			if (row.length != COLS) {
@@ -71,8 +81,8 @@ public class CircuitBoard {
 			for (String item : row) {
 				int validityIndex = ALLOWED_CHARS.indexOf(item);
 				// T is not allowed in grid and index of T is 2
-				boolean isValidChar = validityIndex == -1 || validityIndex == 2;
-				if (isValidChar) {
+				boolean isInvalidChar = validityIndex == -1 || validityIndex == 2;
+				if (isInvalidChar) {
 					fileScan.close();
 					throw new InvalidFileFormatException("Invalid Char in grid");
 				}
@@ -82,18 +92,27 @@ public class CircuitBoard {
 					throw new InvalidFileFormatException("No whitespace separating Chars in grid");
 				}
 
-				colCount++;
 				char itemChar = item.charAt(0);
 
 				if (itemChar == START) {
+					if (startingPoint != null) {
+						fileScan.close();
+						throw new InvalidFileFormatException("Two start Chars");
+					}
 					startingPoint = new Point(rowCount, colCount);
 				} else if (itemChar == END) {
+					if (endingPoint != null) {
+						fileScan.close();
+						throw new InvalidFileFormatException("Two end Chars");
+					}
 					endingPoint = new Point(rowCount, colCount);
 				}
 
 				board[rowCount][colCount] = itemChar;
+				colCount++;
 
 			}
+			rowCount++;
 		}
 		fileScan.close();
 
