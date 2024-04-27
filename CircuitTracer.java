@@ -100,6 +100,9 @@ public class CircuitTracer {
 		//TODO: output results to console or GUI, according to specified choice
 	}
 
+	/**
+	 * Search the board for the best tracer paths. Uses a brute force algorithm.
+	 */
 	private void search() {
 		bestPaths = new ArrayList<TraceState>();
 

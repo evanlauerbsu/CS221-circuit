@@ -1,25 +1,25 @@
 ****************
+
 * Circuit
 * CS 221
 * 26 April 2024
 * Evan Lauer
+
 ****************
 
 OVERVIEW:
 
   CircuitTracer is a program that analyses an input file representing a circuit board that has a starting point to connect to an ending point as well as occupied and unoccupied spaces. It then outputs the shortest traces that can connect the starting point to the ending point.
 
-
 INCLUDED FILES:
 
- * CircuitTracer.java - source file
- * CircuitBoard.java - source file
- * InvalidFileFormatException.java - source file
- * OccupiedPositionException.java - source file
- * Storage.java - source file
- * TraceState.java - source file
- * README - this file
-
+* CircuitTracer.java - source file
+* CircuitBoard.java - source file
+* InvalidFileFormatException.java - source file
+* OccupiedPositionException.java - source file
+* Storage.java - source file
+* TraceState.java - source file
+* README - this file
 
 COMPILING AND RUNNING:
 
@@ -32,12 +32,11 @@ COMPILING AND RUNNING:
  where -s uses a stack internally
        -q uses a queue internally
        -c is console output
-       -g is GUI output 
+       -g is GUI output
 
  Console output will give the results after the program finishes if -c is selected.
- 
- The GUI is not yet implemented so -g will result in a unsupported option message being printed to the console
 
+ The GUI is not yet implemented so -g will result in a unsupported option message being printed to the console
 
 PROGRAM DESIGN AND IMPORTANT CONCEPTS:
 
@@ -51,6 +50,8 @@ PROGRAM DESIGN AND IMPORTANT CONCEPTS:
  explanation of the critical algorithms and object interactions that make
  up the program.
 
+ CircuitTracer has a CircuitBoard that it builds from the
+
  Explain the main responsibilities of the classes and interfaces that make
  up the program. Explain how the classes work together to achieve the program
  goals. If there are critical algorithms that a user should understand,
@@ -59,7 +60,6 @@ PROGRAM DESIGN AND IMPORTANT CONCEPTS:
  If you were responsible for designing the program's classes and choosing
  how they work together, why did you design the program this way? What, if
  anything, could be improved?
-
 
 ANALYSIS:
 
@@ -76,11 +76,9 @@ ANALYSIS:
  vi.
   Looking at my manual simulations, it appears that "n" is the maximum possible path length and the algorithm is O(n^2).
 
-
 TESTING:
 
   I used the CircuitTracerTester to test my program. When I ran into errors, I reviewed the error message given by the tester and manually looked over my program to find the issue. I sometimes added print statements to track certain issues. For instance, I had an infinite loop issue that I ended up solving with a print statement. After my program passed all tests in the tester, I manually tested the program in the console using a few different input files and command line arguments.
-
 
 DISCUSSION:
 
