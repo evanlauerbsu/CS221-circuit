@@ -7,43 +7,36 @@
 
 OVERVIEW:
 
- Concisely explain what the program does. If this exceeds a couple
- of sentences, you're going too far. The details go in other
- sections.
+  CircuitTracer is a program that analyses an input file representing a circuit board that has a starting point to connect to an ending point as well as occupied and unoccupied spaces. It then outputs the shortest traces that can connect the starting point to the ending point.
 
 
 INCLUDED FILES:
 
- List the files required for the project with a brief
- explanation of why each is included.
-
- e.g.
- * Class1.java - source file
- * Class2.java - source file
+ * CircuitTracer.java - source file
+ * CircuitBoard.java - source file
+ * InvalidFileFormatException.java - source file
+ * OccupiedPositionException.java - source file
+ * Storage.java - source file
+ * TraceState.java - source file
  * README - this file
 
 
 COMPILING AND RUNNING:
 
- Give the command for compiling the program, the command
- for running the program, and any usage instructions the
- user needs.
-
- These are command-line instructions for a system like onyx.
- They have nothing to do with Eclipse or any other IDE. They
- must be specific - assume the user has Java installed, but
- has no idea how to compile or run a Java program from the
- command-line.
-
- e.g.
  From the directory containing all source files, compile the
  driver class (and all dependencies) with the command:
- $ javac Class1.java
+ $ javac CircuitTracer.java
 
  Run the compiled class file with the command:
- $ java Class1
+ $ java CircuitTracer <-s | -q> <-c | -g> filename
+ where -s uses a stack internally
+       -q uses a queue internally
+       -c is console output
+       -g is GUI output 
 
- Console output will give the results after the program finishes.
+ Console output will give the results after the program finishes if -c is selected.
+ 
+ The GUI is not yet implemented so -g will result in a unsupported option message being printed to the console
 
 
 PROGRAM DESIGN AND IMPORTANT CONCEPTS:
@@ -86,12 +79,7 @@ ANALYSIS:
 
 TESTING:
 
- How did you test your program to be sure it works and meets all of the
- requirements? What was the testing strategy? What kinds of tests were run?
- Can your program handle bad input? Is your program  idiot-proof? How do you
- know? What are the known issues / bugs remaining in your program?
-
- I wrote a naive solution for the CircuitBoard constructor and then tested it by running the CircuitTracerTester and iteratively fixing errors until no more issues were encountered. I used to debugger to track down a couple of errors including an error where board was not initialized.
+  I used the CircuitTracerTester to test my program. When I ran into errors, I reviewed the error message given by the tester and manually looked over my program to find the issue. I sometimes added print statements to track certain issues. For instance, I had an infinite loop issue that I ended up solving with a print statement. After my program passed all tests in the tester, I manually tested the program in the console using a few different input files and command line arguments.
 
 
 DISCUSSION:
@@ -103,9 +91,3 @@ DISCUSSION:
 
  What parts of the project did you find challenging? Is there anything
  that finally "clicked" for you in the process of working on this project?
-
-
-EXTRA CREDIT:
-
- If the project had opportunities for extra credit that you attempted,
- be sure to call it out so the grader does not overlook it.
