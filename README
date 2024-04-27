@@ -41,24 +41,55 @@ COMPILING AND RUNNING:
 
 PROGRAM DESIGN AND IMPORTANT CONCEPTS:
 
- This is the sort of information someone who really wants to
- understand your program - possibly to make future enhancements -
- would want to know.
+ CircuitTracer has a CircuitBoard constructed from the input file. It uses this to create the initial TraceStates representing each of the possible paths with a length of 1 originating from the starting point of CircuitBoard. It has a Storage object with an internal representation of either a stack or queue depending on the command line arguments. This Storage object is used to store the TraceStates.
+ 
+ Input files are given in the format:
+ 
+  first line: (# of rows as r) (# of columns as c)
+    row 1: (c items where an item can be X, O, 1, or 2)
+    .
+    .
+    .
+    row r
 
- Explain the main concepts and organization of your program so that
- the reader can understand how your program works. This is not a repeat
- of javadoc comments or an exhaustive listing of all methods, but an
- explanation of the critical algorithms and object interactions that make
- up the program.
+    X means closed
+    O means open
+    1 is the starting position
+    2 is the ending position
 
- Explain the main responsibilities of the classes and interfaces that make
- up the program. Explain how the classes work together to achieve the program
- goals. If there are critical algorithms that a user should understand,
- explain them as well.
+    ex:
+     5 6
+     X O 1 O O O
+     X X X O O O
+     O O O O X O
+     O 2 O O X O
+     O X O O O O
 
- If you were responsible for designing the program's classes and choosing
- how they work together, why did you design the program this way? What, if
- anything, could be improved?
+ Output files are given in the same format as input files but contain one path from the starting position to the ending position represented with T's
+
+ The algorithm works as follows:
+
+  initialize an empty Storage object called stateStore that stores objects of type TraceState
+
+  initialize an empty List called bestPaths that stores objects of type TraceState
+ 
+  add a new initial TraceState object (a path with one trace) to stateStore for each open position adjacent to the starting component
+  
+  while (!stateStore.isEmpty)
+    
+    retrieve the next TraceState object from stateStore
+    
+    if that TraceState object is a solution (ends with a position adjacent to the ending component),
+    
+      if bestPaths is empty or the TraceState object's path is equal in length to one of the TraceStates in bestPaths,
+        
+        add it to bestPaths
+      
+      else if that TraceState object's path is shorter than the paths in bestPaths,
+        
+        clear bestPaths and add the current TraceState as the new shortest path
+        
+    else generate all valid next TraceState objects from the current TraceState and add them to stateStore
 
 
 ANALYSIS:
@@ -84,10 +115,6 @@ TESTING:
 
 DISCUSSION:
 
- Discuss the issues you encountered during programming (development)
- and testing. What problems did you have? What did you have to research
- and learn on your own? What kinds of errors did you get? How did you
- fix them?
+ It was relatively to read the file from input into a CircuitBoard. The most difficult part was correctly labeling the different kinds of errors and making sure that the filename was added to each error message. Writing CircuitTracer easy because the algorithm was given in pseudo-code and relatively little effort was needed to turn it into java code. Debugging CircuitTracer was more difficult, and I ran into several issues such as an infinite loop that I described in the "TESTING" section. I did not have to do research outside of what was given in the project description.
 
- What parts of the project did you find challenging? Is there anything
- that finally "clicked" for you in the process of working on this project?
+ The project was fairly easy. The analysis of the algorithm that I did manually was time consuming, but not very difficult. Once I did the analysis, I made the connections about what it meant fairly easily. Determining the runtime order was the hardest part.
